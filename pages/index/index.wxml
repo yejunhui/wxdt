@@ -1,0 +1,15 @@
+<!--index.wxml-->
+<view class="welcome-view">  
+  欢迎您！{{userInfo.nickName}}
+</view>
+<view class="video-view">
+  <video class="video-view" src="{{videoSrt}}" autoplay="1"></video>
+</view>
+<view class="container">
+  <button class="startbutton" bindtap="bindViewTap">{{button}}</button>
+</view>
+<view class="icon-button-view">
+  <button class="icon-button" bindtap="bindViewCard"><image class="icon-image" src="./img/card.svg"></image></button>
+  <button class="icon-button" bindtap="bindViewOrder"><image class="icon-image" src="./img/order.svg"></image></button>
+  <button class="icon-button" bindtap="bindViewBag"><image class="icon-image" src="./img/my assets.svg"></image></button>
+</view>

@@ -1,0 +1,44 @@
+<!--pages/order/order.wxml-->
+<view class="welcome-view">
+  欢迎您！{{userInfo.nickName}} {{userInfo_error}}
+</view>
+<view class="left-view">
+  <block wx:for="{{leftLists}}">
+    <view class="left-item-view" bindtap="bindViewIndex">
+      <image src="{{item.icon}}" class="left-item-view-item-img"></image>
+      <text class="left-item-view-item-text">{{item.name}}</text>
+    </view>
+  </block>
+
+</view>
+<view class="right-view">
+  <block wx:for="{{rightLists}}">
+    <view class="right-view-item" style="background-image:url('{{rightViewItemImage}}')">
+      <view class="" >
+        <view class="right-view-item-view-name">{{item.name}}</view>
+        <view class="right-view-item-view-price">{{item.price}}</view>
+      </view>
+      <view class="right-view-item-view">
+        <view class="right-view-item-view-view">-</view>
+        <view class="right-view-item-view-view">
+          <text>{{item.num}}</text>
+        </view>
+        <view class="right-view-item-view-view">+</view>
+      </view>
+    </view>
+  </block>
+  <view class="right-view-item" style="background-image:url('{{rightViewItemImage}}')">
+    <view class="" >
+      <view class="right-view-item-view-name">名称</view>
+      <view class="right-view-item-view-price">价格</view>
+    </view>
+    <view class="right-view-item-view">
+      <view class="right-view-item-view-view">-</view>
+      <view class="right-view-item-view-view">
+        <text>100</text>
+      </view>
+      <view class="right-view-item-view-view">+</view>
+    </view>
+  </view>
+</view>
+
