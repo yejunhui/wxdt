@@ -1,0 +1,10 @@
+<scroll-view class="view" scroll-y="true">
+  <block wx:for="{{orderList}}">
+    <view class="view-item-view" data-ordernumber="{{item.ordernumber}}" data-state="{{item.state}}" bindtap="toOrder">
+      <view class="view-item-view-ordernumber">{{item.ordernumber}}</view>
+      <view class="view-item-view-play">￥{{item.orprice}}</view>
+      <view class="view-item-view-state">{{item.state}}</view>
+      <view class="view-item-view-createdate">{{item.createdate}}</view>
+    </view>
+  </block>
+</scroll-view>

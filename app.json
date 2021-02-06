@@ -2,7 +2,12 @@
   "pages": [
     "pages/index/index",
     "pages/logs/logs",
-    "pages/order/order"
+    "pages/order/order",
+    "pages/card/card",
+    "pages/bag/bag",
+    "pages/orderList/orderList",
+    "pages/sigup/sigup",
+    "pages/orderitem/orderitem"
   ],
   "window": {
     "backgroundTextStyle": "light",

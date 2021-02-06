@@ -1,15 +1,31 @@
 <!--index.wxml-->
-<view class="welcome-view">  
-  欢迎您！{{userInfo.nickName}}
-</view>
-<view class="video-view">
-  <video class="video-view" src="{{videoSrt}}" autoplay="1"></video>
-</view>
-<view class="container">
-  <button class="startbutton" bindtap="bindViewTap">{{button}}</button>
-</view>
-<view class="icon-button-view">
-  <button class="icon-button" bindtap="bindViewCard"><image class="icon-image" src="./img/card.svg"></image></button>
-  <button class="icon-button" bindtap="bindViewOrder"><image class="icon-image" src="./img/order.svg"></image></button>
-  <button class="icon-button" bindtap="bindViewBag"><image class="icon-image" src="./img/my assets.svg"></image></button>
-</view>
+<scroll-view scroll-y="true">
+  <view class="welcome-view"> 
+  </view>
+  <view class="photo-view">
+    <swiper indicator-dots="true" autoplay="true">
+      <block wx:for="{{photos}}">
+        <swiper-item>
+          <image src="{{item.image}}"></image>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view class="container">
+    <button class="startbutton" bindtap="bindViewTap">开始点餐</button>
+  </view>
+  <view class="icon-view">
+    <view class="icon-button" bindtap="bindViewCard">
+      <image class="icon-image" src="/image/card.svg"></image>
+      <text class="icon-text">我的会员码</text>
+    </view>
+    <view class="icon-button" bindtap="bindViewOrder">
+      <image class="icon-image" src="/image/order.svg"></image>
+      <text class="icon-text">我的订单</text>
+    </view>
+    <view class="icon-button" bindtap="bindViewBag">
+      <image class="icon-image" src="/image/bag.svg"></image>
+      <text class="icon-text">我的卡包</text>
+    </view>
+  </view>
+</scroll-view>

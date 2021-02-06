@@ -1,0 +1,43 @@
+/* pages/bag/bag.wxss */
+.view{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(235, 235, 235);
+}
+.view-item{
+  width: 100%;
+  height: 150px;
+  background-color: white;
+  margin-top: 3px;
+  border-radius: 15px;
+}
+.view-item-id{
+  font-size: 9px;
+  margin-left: 10px;
+  margin-top: 15px;
+}
+.view-item-name{
+  font-size: 18px;
+  margin-top: 15px;
+  margin-left: 12px;
+}
+.view-item-price{
+  font: 13px;
+  margin-top: 15px;
+  margin-left: 12px;
+}
+.view-item-stopdate{
+  font-size: 7px;
+  margin-top: 20px;
+  margin-left: 12px;
+}
+.view-item-togo{
+  margin-left: 70%;
+  margin-right: 5px;
+  margin-top: 5px;
+  font-size: 12px;
+  color: red;
+}

@@ -23,7 +23,7 @@
     "compileHotReLoad": false,
     "useMultiFrameRuntime": true,
     "useApiHook": true,
-    "useApiHostProcess": false,
+    "useApiHostProcess": true,
     "babelSetting": {
       "ignore": [],
       "disablePlugins": [],
@@ -40,8 +40,8 @@
     "minifyWXSS": true
   },
   "compileType": "miniprogram",
-  "libVersion": "2.0.4",
-  "appid": "wx6334960396d41ee2",
+  "libVersion": "2.14.4",
+  "appid": "wx7bfa5d81bc7ab3c6",
   "projectname": "yunct",
   "debugOptions": {
     "hidedInDevtools": []

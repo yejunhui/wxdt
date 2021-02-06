@@ -4,10 +4,12 @@ const app = getApp()
 
 Page({
   data: {
-    title:'Dxxt',
+    title:'',
     userInfo:[],//用户数据
-    videoSrt:'',//主页视频路径，文件过大，要设置为网络文件
+    photos:[],
     newTime:'',//现在时刻，用于提醒客户时间段
+    openid:null,
+    ServerUrl:app.globalData.ServerUrl,
   },
   // 跳转到点餐页面
   bindViewTap() {
@@ -19,57 +21,71 @@ Page({
   //跳转会员卡
   bindViewCard(){
     console.log('调用了会员跳转');
-    url:"../order/order"
+    wx.navigateTo({
+      url: '../card/card',
+    })
   },
+  //跳转订单
   bindViewOrder(){
     console.log('调用订单跳转');
+    wx.navigateTo({
+      url: '../orderList/orderList',
+    })
   },
+  //跳转卡包
   bindViewBag:function(){
     console.log('调用了卡包跳转');
+    wx.navigateTo({
+      url: '../bag/bag',
+    })
   },
+
   onLoad() {
+    console.log('跳转主页')
+    var that = this
+    var app = getApp();
+    wx.showLoading({
+      title: '小二正在赶来...',
+      mask:true
+    })
+    wx.request({
+      url: this.data.ServerUrl+"/indexList.jsp",
+      data:{'shop':app.globalData.shop},
+      success(res){
+        console.log(res.data)
+        app.globalData.disconuts=res.data.disconuts
+        app.globalData.satisfy=res.data.satisfy
+        app.globalData.mitigate=res.data.mitigate
+        that.setData({
+          photos:res.data.data,
+        })
+      }
+    })
     //设置页面标题
     wx.setNavigationBarTitle({
       title: this.data.title,
     })
-    //初始数据
+    console.log("userInfo:")
+    console.log(app.globalData.userInfo)
     this.setData({
-      button:"开始点餐",
-      videoSrt:"http://www.w3school.com.cn/example/html5/mov_bbb.mp4"
+      userInfo:app.globalData.userInfo
     })
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse) {
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
+  },
+  onShow(){
+    wx.getSetting({
+      success(res){
+        console.log(res.authSetting)
+        if(res.authSetting["scope.userInfo"]){
+          console.log('授权成功')
+        }else{
+          console.log('授权失败')
+          wx.navigateTo({
+            url: '../sigup/sigup',
           })
         }
-      })
-    }
-  },
-  getUserInfo(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
+      },
     })
+  },
+  onReady(){
   }
 })

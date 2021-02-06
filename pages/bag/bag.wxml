@@ -1,0 +1,13 @@
+<!--pages/bag/bag.wxml-->
+<scroll-view scroll-y="true" class="view">
+  <block wx:for="{{cardList}}">
+    <view class="view-item" bindtap="toOrder">
+      <view class="view-item-id">{{item.id}}</view>
+      <view class="view-item-name">{{item.name}}</view>
+      <view wx:if="{{item.product=='null'}}" class="view-item-price">￥{{item.val}}</view>
+      <view wx:if="{{item.product!='null'}}" class="view-item-price">{{item.product}}</view>
+      <view class="view-item-stopdate">截止时间：{{item.stopdate}}</view>
+      <view class="view-item-togo">>>马上使用</view>
+    </view>
+  </block>
+</scroll-view>

@@ -1,0 +1,23 @@
+<view class="view">
+  <view>订单号：{{ordernumber}}</view>
+  <view>{{play}}：{{orprice-dis-mit}}(原价：{{orprice}})</view>
+  <scroll-view scroll-y="ture">
+    <block wx:for="{{itemList}}">
+          <view class="view-item" >
+            <view class="view-item-view-name">{{item.name}}</view>
+            <view class="view-item-view-price">{{item.price}}</view>
+            <view class="view-item-view-number">{{item.num}}（份）</view>
+            <view class="view-item-view-dis">优惠：￥{{item.dis+item.mit}}</view>
+          </view>
+    </block>
+  </scroll-view>
+  <view class="view-button-view">
+    <view class="view-button-text">
+      <text>合计：￥{{orprice-dis-mit}}\n</text>
+      <text wx:if="{{(dis+mit)>0}}">已优惠：￥{{dis+mit}}</text>
+    </view>
+    <view>
+      <button class="view-play-button">确认支付</button>
+    </view>
+  </view>
+</view>

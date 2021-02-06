@@ -1,43 +1,42 @@
 <!--pages/order/order.wxml-->
-<view class="welcome-view">
-  欢迎您！{{userInfo.nickName}} {{userInfo_error}}
-</view>
-<view class="left-view">
-  <block wx:for="{{leftLists}}">
-    <view class="left-item-view" bindtap="bindViewIndex">
-      <image src="{{item.icon}}" class="left-item-view-item-img"></image>
-      <text class="left-item-view-item-text">{{item.name}}</text>
-    </view>
-  </block>
+<view class="view">
+  <view class="welcome-view">
+    <view>欢迎您！{{userInfo.nickName}} {{userInfo_error}}</view>
+  </view>
+  <view class="left-view">
+    <block wx:for="{{leftLists}}">
+      <view class="left-item-view" style="background-color：{{colors[item.id]}}" bindtap="toView" data-t="{{item.id}}" id="{{item.id}}">
+        <view><image src="{{item.imageurl}}" class="left-item-view-item-img"></image></view>
+        <view><text class="left-item-view-item-text">{{item.name}}</text></view>
+      </view>
+    </block>
 
-</view>
-<view class="right-view">
-  <block wx:for="{{rightLists}}">
-    <view class="right-view-item" style="background-image:url('{{rightViewItemImage}}')">
-      <view class="" >
-        <view class="right-view-item-view-name">{{item.name}}</view>
-        <view class="right-view-item-view-price">{{item.price}}</view>
-      </view>
-      <view class="right-view-item-view">
-        <view class="right-view-item-view-view">-</view>
-        <view class="right-view-item-view-view">
-          <text>{{item.num}}</text>
+  </view>
+  <scroll-view class="right-view2" scroll-into-view="{{toview}}" scroll-y="true">
+    <block wx:for="{{rightLists}}">
+      <view class="right-view-item" style="background-image:url('{{item.imageurl}}')" id="{{item.id}}">
+        <view class="" >
+          <view class="right-view-item-view-name">{{item.name}}</view>
+          <view class="right-view-item-view-number">供应：{{item.number}}（份）</view>
+          <view class="right-view-item-view-price">{{item.price}}</view>
         </view>
-        <view class="right-view-item-view-view">+</view>
+        <view class="right-view-item-view">
+          <view class="right-view-item-view-view" bindtap="pyDel" data-name="{{item.name}}">-</view>
+          <view class="right-view-item-view-view">
+            <text>{{item.num}}</text>
+          </view>
+          <view class="right-view-item-view-view" bindtap="pyAdd" data-name="{{item.name}}">+</view>
+        </view>
       </view>
+    </block>
+  </scroll-view>
+  <view class="view-button-view">
+    <view class="view-button-text">
+      <text>合计：￥{{cny-dis-mit}}\n</text>
+      <text wx:if="{{cny>0}}">已优惠：￥{{dis+mit}}</text>
     </view>
-  </block>
-  <view class="right-view-item" style="background-image:url('{{rightViewItemImage}}')">
-    <view class="" >
-      <view class="right-view-item-view-name">名称</view>
-      <view class="right-view-item-view-price">价格</view>
-    </view>
-    <view class="right-view-item-view">
-      <view class="right-view-item-view-view">-</view>
-      <view class="right-view-item-view-view">
-        <text>100</text>
-      </view>
-      <view class="right-view-item-view-view">+</view>
+    <view>
+      <button class="view-button" bindtap="bindViewPlay">确认支付</button>
     </view>
   </view>
 </view>

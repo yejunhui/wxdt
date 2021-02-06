@@ -1,0 +1,4 @@
+<view class="view">
+  <view><image class="view-image" src="{{qc_code.imageUrl}}"></image></view>
+  <view><text>[{{qc_code.text}}]</text></view>
+</view>
